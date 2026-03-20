@@ -1,5 +1,6 @@
 local module = {}
 local net = require("@lune/net")
+local serde = require("@lune/serde")
 local project_info = require("./get_info")
 
 local colors = {
@@ -50,12 +51,13 @@ end
 local actions = {
     ["GET"] = function(packet: net.ServeRequest)
         local true_path = packet.path:split("/")
+        table.remove(true_path, 1)
         local endpack: any = nil
 
         if true_path[1] == "info" then
             endpack = {
                 status = 200,
-                body = project_info
+                body = serde.encode("json", project_info)
             } :: net.ServeResponse
         end
 
