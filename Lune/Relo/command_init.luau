@@ -75,6 +75,7 @@ return function(args: { name: string })
         project_name = args.name,
         default_port = 8088,
         heartbeat_interval = 1,
+        two_way_scripting = false,
         log_actions = {
             error = true,
             warn = true,

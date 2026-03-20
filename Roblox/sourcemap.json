@@ -1,1 +1,46 @@
-{"name":"Roblox","className":"DataModel","filePaths":["default.project.json"],"children":[{"name":"Lighting","className":"Lighting"},{"name":"ReplicatedStorage","className":"ReplicatedStorage","children":[{"name":"Shared","className":"Folder","children":[{"name":"Main","className":"Script","filePaths":["src/shared/Main.server.luau"]}]}]},{"name":"SoundService","className":"SoundService"},{"name":"Workspace","className":"Workspace","children":[{"name":"Baseplate","className":"Part"}]}]}
+{
+  "name": "Roblox",
+  "className": "DataModel",
+  "filePaths": [
+    "default.project.json"
+  ],
+  "children": [
+    {
+      "name": "Lighting",
+      "className": "Lighting"
+    },
+    {
+      "name": "ReplicatedStorage",
+      "className": "ReplicatedStorage",
+      "children": [
+        {
+          "name": "Shared",
+          "className": "Folder",
+          "children": [
+            {
+              "name": "Main",
+              "className": "Script",
+              "filePaths": [
+                "src/shared/Main.server.luau"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SoundService",
+      "className": "SoundService"
+    },
+    {
+      "name": "Workspace",
+      "className": "Workspace",
+      "children": [
+        {
+          "name": "Baseplate",
+          "className": "Part"
+        }
+      ]
+    }
+  ]
+}

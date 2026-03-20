@@ -2,6 +2,7 @@ export type project_info = {
     project_name:string,
     default_port:number,
     heartbeat_interval:number,
+    two_way_scripting:boolean,
     log_actions:{
         error:boolean,
         warn:boolean,

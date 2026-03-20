@@ -109,6 +109,10 @@ function module.Begin_net()
     local port = project_info.default_port
     local url = `http://localhost:{port}`
 
+    if project_info.two_way_scripting == true then
+        print(" " .. paint(c.yellow, "WARNING:") .. "  -  " .. paint(c.white, "You have two_way_scripting turned on, this can result in unintended behaviour"))
+    end
+
     print(" " .. bold(c.white, "Server starting"))
     print("  " .. paint(c.white, "Local:") .. "   " .. paint(c.cyan, url))
     print("  " .. paint(c.white, "Port:") .. "    " .. paint(c.yellow, tostring(port)))

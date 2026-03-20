@@ -1,6 +1,3 @@
-#!/bin/bash
-
-rojo serve ../Plugin &
-lune run build
-
-wait
+#!/bin/sh
+lune run relo "$@"
+ 
