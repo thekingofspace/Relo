@@ -37,7 +37,8 @@ end
 
 local common_files = {
     folders = {
-        "proxies"
+        "proxies",
+        "src"
     },
     files = {
         "relo.init.json",
