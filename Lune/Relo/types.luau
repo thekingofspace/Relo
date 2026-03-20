@@ -9,4 +9,9 @@ export type project_info = {
     }
 }
 
+export type staged<i> = {
+    op:number,
+    d:i
+}
+
 return true

@@ -1,11 +1,14 @@
 local module = {}
-module.LastHeatbeat = 0
-module.Started = false
 local net = require("@lune/net")
 local serde = require("@lune/serde")
 local process = require("@lune/process")
 local project_info = require("./get_info")
 local task = require("@lune/task")
+local types = require("../types")
+
+module.LastHeatbeat = 0
+module.Started = false
+module.StagedData = {}::{types.staged<any>}
 
 local c = {
     reset   = "\27[0m",
@@ -77,10 +80,30 @@ local actions = {
         return endpack
     end,
 
-    ["PATCH"] = function()
+    ["PATCH"] = function(packet: net.ServeRequest)
+        local cache = {}
+        if #module.StagedData > 0 then
+            for _ = 1,25 do
+                table.insert(cache, table.remove(module.StagedData, 1))
+                if #module.StagedData == 0 then
+                    break
+                end
+            end
+        end
         module.LastHeatbeat = os.time()
+        if project_info.log_actions.connection == true then
+            log_request("PATCH", "heartbeat", 200)
+        end
+        return {
+            status = 200,
+            body = serde.encode("json", cache)
+        }
     end
 }
+
+function module.StageData(op:number, data:any)
+    table.insert(module.StagedData, {op = op, d = data})
+end
 
 function module.Begin_net()
     local port = project_info.default_port
